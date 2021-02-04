@@ -18,22 +18,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../python2020/CRM/hamob2/tool/hardinfomeation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="2916">
               <caret line="117" column="36" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="95" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
-              <caret line="127" column="11" lean-forward="true" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
+            <state relative-caret-position="518">
+              <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hamob2/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1917" />
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -44,10 +54,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2076" />
-    <option name="y" value="-32" />
-    <option name="width" value="1699" />
-    <option name="height" value="1019" />
+    <option name="x" value="2075" />
+    <option name="y" value="-33" />
+    <option name="width" value="1700" />
+    <option name="height" value="1020" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -60,6 +70,16 @@
           <expand>
             <path>
               <item name="hamob2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hamob2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hamob2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hamob2" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hamob2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hamob2" type="462c0819:PsiDirectoryNode" />
               <item name="hamob2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -79,6 +99,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -258,16 +279,17 @@
       <option name="presentableId" value="Default" />
       <updated>1612421945231</updated>
       <workItem from="1612422422470" duration="1458000" />
+      <workItem from="1612432510290" duration="60000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4485000" />
+    <option name="totallyTimeSpent" value="4806000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1913" y="-7" width="1358" height="814" extended-state="7" />
+    <frame x="1913" y="-7" width="1358" height="814" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25384617" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2576923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -280,7 +302,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.95607615" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.95607615" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.329429" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -371,23 +393,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hamob2/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-837" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../python2020/CRM/hamob2/tool/hardinfomeation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="2916">
           <caret line="117" column="36" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="95" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="127" column="11" lean-forward="true" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
+        <state relative-caret-position="518">
+          <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hamob2/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1917" />
       </provider>
     </entry>
   </component>
