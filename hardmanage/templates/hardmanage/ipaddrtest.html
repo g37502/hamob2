@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% load hard_tmp %}
+{% block content %}
+    <div><p>IP登陆页面</p>
+    {% include 'hardmanage/ipadd.html' %}
+    {% iphandle_tmp %}
+    </div>
+    {% hardwait_tmp %}
+{% endblock %}
+

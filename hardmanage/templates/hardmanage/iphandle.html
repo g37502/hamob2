@@ -1,0 +1,23 @@
+<div style="float: right;width: 65%">
+        <table class="table table-striped">
+            <thead style="font-size: larger">
+                <tr>
+                    <td>IP地址</td>
+                    <td>登陆时间</td>
+                    <td>完成时间</td>
+                    <td>详细说明</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for k,v in ipchadleall.items %}
+                    <tr>
+                        <td>{{ k }}</td>
+                        <td>{{ v.inserttime }}</td>
+                        <td>{{ v.endtime }}</td>
+                        <td>{{ v.completiontime }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>

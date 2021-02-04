@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="{% static '../../../static/stark/imgs/luffy-study-logo.png' %} ">
+    <link rel="stylesheet" href="{% static '../../../static/stark/plugins/bootstrap/css/bootstrap.css' %} "/>
+    <link rel="stylesheet" href="{% static '../../../static/stark/plugins/font-awesome/css/font-awesome.css' %} "/>
+    <link rel="stylesheet" href="{% static '../../../static/stark/css/commons.css' %} "/>
+    <link rel="stylesheet" href="{% static '../../../static/stark/css/nav.css' %} "/>
+</head>
+<body>
+<form action="">
+    <input type="checkbox" name="hardhost" value="123">
+    <a href="test/"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+    <input type="submit" value="提交">
+<div style="padding: 2%">
+    <table title="主机型号" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>主机名</th>
+            <th>序列号</th>
+            <th>型号</th>
+            <th>厂商</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ obj.HOSTNAME }}</td>
+            <td>{{ obj.Serian_Number }}</td>
+            <td>{{ obj.ModelName.Manufacturer }}</td>
+            <td>{{ obj.Producer.Product_Name }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table title="CPU信息" class="table table-bordered">
+        <thead>
+        <tr>
+            <th>型号</th>
+            <th>核数</th>
+            <th>主频</th>
+            <th>每核线程</th>
+            <th>颗数</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ obj.CPU.name }}</td>
+            <td>{{ obj.CPU.Core_number.count }}</td>
+            <td>{{ obj.CPU.Frequ.Frequ }}</td>
+            <td>{{ obj.CPU.Core_thread.count }}</td>
+            <td>{{ obj.CPU_NUMber.count }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>内存大小</th>
+            <th>数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ obj.Memory.Size }}</td>
+            <td>{{ obj.Memory_NUMber.count }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered">
+        <thead>
+
+            <tr>
+                <th>
+                    IP
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ip in obj.IP.all %}
+            <tr>
+                <td>{{ ip.IP }}/{{ ip.NETMASK }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table title="应用" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>服务</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>..</td>
+            </tr>
+        </tbody>
+    </table>
+    <table title="地址" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>IDC</th>
+                <th>地址</th>
+                <th>市</th>
+                <th>省</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in obj.host_idc.all %}
+            <tr>
+                <td>{{ x.name }}</td>
+                <td>{{ x.address }}</td>
+                <td>{{ x.address.city }}</td>
+                <td>{{ x.address.city.prov }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</form>
+</body>
+</html>

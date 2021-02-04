@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% load stark %}
+{% block content %}
+    <table class="table table-hover table-bordered">
+    <tr>
+        {% for i in queryset %}
+            <td>{{ i.domain }}</td>
+            {% if forloop.counter|divisibleby:3 %}
+                <tr></tr>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    </table>
+    <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {{ page.page_html|safe }}
+                </ul>
+    </nav>
+{% endblock %}

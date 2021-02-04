@@ -1,0 +1,17 @@
+<div style="float: left;width: 30%">
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            <label class="col-sm-3 control-label">IP地址</label>
+            <div class="col-sm-7">
+                <input class="form-control" name="ip_addr" placeholder="192.168.1.0/24">
+                <span style="color: #c9302c"> {{ e }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-6 col-sm-10">
+                <button type="submit" class="btn btn-default">登 记</button>
+            </div>
+        </div>
+    </form>
+</div>

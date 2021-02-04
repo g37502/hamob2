@@ -1,0 +1,102 @@
+@charset "utf-8";
+body {margin:0px; background-color:#CCCCCC}
+
+
+
+.menubg{background:url(images/bg.gif) no-repeat center top;}
+
+
+
+.menu{font-family:"微软雅黑", "新宋体", "宋体"; text-align:center; color:#FFFFFF}
+
+.menu a:link{font-family:"微软雅黑", "新宋体", "宋体"; text-align:center; color:#FFFFFF}
+
+.menu a:active{font-family:"微软雅黑", "新宋体", "宋体"; text-align:center; color:#FFFFFF}
+
+.menu a:hover{font-family:"微软雅黑", "新宋体", "宋体"; text-align:center; color:#FFFFFF}
+
+.menu a:visited{font-family:"微软雅黑", "新宋体", "宋体"; text-align:center; color:#FFFFFF}
+
+
+
+.indexb{ font-family:"微软雅黑", "新宋体", "宋体"; font-weight:bold; font-size:12px}
+
+
+
+.indexf{ font-family:"微软雅黑", "新宋体", "宋体"; font-size:12px}
+
+
+
+.indexf16b{ font-family:"微软雅黑", "新宋体", "宋体"; font-size:16px; color:#999999; font-weight:bold}
+
+
+
+.indexf16{ font-family:"微软雅黑", "新宋体", "宋体"; font-size:16px; color:#999999;}
+
+
+
+.bottombg{background:url(images/bottombg.gif) no-repeat center top; text-align:center; color:#999999}
+
+
+
+.indexlink a:link {font-family:"微软雅黑", "新宋体", "宋体"; font-size:12px; color:#666666; text-decoration:none}
+
+.indexlink a:visited{font-family:"微软雅黑", "新宋体", "宋体"; font-size:12px; color:#666666; text-decoration:none}
+
+.indexlink a:hover{font-family:"微软雅黑", "新宋体", "宋体"; font-size:12px; color:#666666; text-decoration:underline}
+
+.indexlink a:active{font-family:"微软雅黑", "新宋体", "宋体"; font-size:12px; color:#666666; text-decoration:none}
+
+
+
+.quafont{font-weight:bold; text-decoration:underline; font-size:12px; font-family:"微软雅黑", "新宋体", "宋体"}
+
+.bluelink{font-size:12px; font-family:"微软雅黑", "新宋体", "宋体"}
+
+.newstime{color:#999999; font-size:12px; font-family:"微软雅黑", "新宋体", "宋体"}
+
+.indexfont{font:12px "微软雅黑", "新宋体", "宋体"; line-height:18px; padding:5px;}
+
+.indexfont a:link, .indexfont a:visited, .indexfont a:active{
+
+font:12px "微软雅黑", "新宋体", "宋体"; line-height:18px; color:#000099; text-decoration:none;}
+
+.indexfont a:hover{
+
+font:12px "微软雅黑", "新宋体", "宋体"; line-height:18px; color:#000099; text-decoration:underline;}
+
+.indexfont img{border:0px}
+
+.intitles{font:"微软雅黑", "新宋体", "宋体"; font-size:14px; line-height:24px; color:#99CC00}
+
+.intitlejiage {
+
+
+
+	font:"微软雅黑", "新宋体", "宋体"; font-size:16px; line-height:16px; color:#FF9933}
+
+.intitle{
+
+
+
+	font:"微软雅黑", "新宋体", "宋体"; line-height:36px; font-size:18px}
+
+/*****************左侧菜单开始************************************************/
+
+
+
+ul.leftm{
+
+	margin:0; list-style-type:none; background-color:#efefef; padding-left:0px}
+
+ul.leftm li{
+
+	font:12px "微软雅黑", "新宋体", "宋体"; color:#000000; background-color:inherit;border-bottom:solid 1px #ffffff; width:219px}
+
+ul.leftm li a,ul.leftm li a:visited{
+
+width:219px; height:22px; display:block; color:#666666; font:12px "微软雅黑", "新宋体", "宋体"; line-height:26px; text-decoration:none; text-align:left;}
+
+ul.leftm li a:hover, ul.leftm li a:active{color:#FFFFFF; text-decoration:none;}
+
+/*****************左侧菜单结束************************************************/

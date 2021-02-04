@@ -1,0 +1,44 @@
+<div style="clear: both;padding-top: 2%">
+    <form action="hard/multip/"  method="post">
+        {% csrf_token %}
+        <div class="form-inline form-group" style="float: left;padding-left: 2%">
+            <select class="form-control" name="hard_sele" id="">
+                <option value=""> 请选择功能</option>
+                <option value="multip_save">录入选择的主机</option>
+                <option value="multip_del">删除选择的主机</option>
+            </select>
+            <button type="submit" class="btn btn-primary">执行</button>
+        </div>
+        <div style="float: right;padding-right: 5%"><a href=""><i class="fa fa-refresh fa-2x"
+                                                                  aria-hidden="true"></i></a></div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>选择</th>
+                <th>主机名</th>
+                <th>设备信息</th>
+                <th>CPU信息</th>
+                <th>内存信息</th>
+                <th>IP信息</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for k,v in hardinfoall.items %}
+                <tr>
+                    <td><input type="checkbox" name="hardhost" value="{{ k }}"></td>
+                    <td>{{ k }}</td>
+                    <td>{{ v.host }}</td>
+                    <td>{{ v.cpu_info }}</td>
+                    <td>{{ v.memory }}</td>
+                    <td>{{ v.ips }}</td>
+                    <td>
+                        <a href="hard/save/{{ k }}"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                        <a href="hard/del/{{ k }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</div>
