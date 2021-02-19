@@ -155,7 +155,6 @@ class ChangeList(object):
 
 
     def gen_list_filter_rows(self):
-
         for option in self.list_filter:
             _field = self.config.model_class._meta.get_field(option.field)
             yield option.get_queryset(_field, self.config.model_class,self.config.request.GET)
@@ -307,7 +306,6 @@ class StarkConfig(object):
         if q:
             for field in search_list:
                 con.children.append(('%s__contains' % field, q))
-
         return search_list, q, con
 
     def get_list_filter(self):

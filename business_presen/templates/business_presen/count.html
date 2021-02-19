@@ -1,0 +1,279 @@
+{% extends 'layout.html' %}
+{% load stark %}
+{% block css %}
+    <style>
+        .comb-search {
+            padding: 5px 20px;
+        }
+
+        .comb-search .row .whole {
+            width: 60px;
+            float: left;
+
+        }
+
+        .comb-search .row .others {
+            padding-left: 60px;
+        }
+
+        .comb-search .row a {
+            display: inline-block;
+            padding: 5px 8px;
+            margin: 3px;
+            border: 1px solid #d4d4d4;
+
+        }
+
+        .comb-search .row a {
+            display: inline-block;
+            padding: 5px 8px;
+            margin: 3px;
+            border: 1px solid #d4d4d4;
+        }
+
+        .comb-search a.active {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+    <div class="comb-search">
+        {% for row in cl.gen_list_filter_rows %}
+            <div class="row">
+                {% for obj in row %}
+                    {{ obj|safe }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div>
+            <div class="row" style="padding-top: 5px">
+
+                {% for obj in c1.gen_list_filter_clonum %}
+                    {{ obj|safe }}
+                {% endfor %}
+
+            </div>
+          <div class="row" style="padding-top: 5px">
+
+                {% for row in c2.gen_list_filter_row %}
+                    {% for obj in row %}
+                        {{ obj|safe }}
+                    {% endfor %}
+                {% endfor %}
+
+            </div>
+
+            <div class="row" style="padding-top: 5px">
+                <div class="whole"><a href="">时间</a></div>
+                <form class="form-inline" action="" onsubmit="return false;">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control demo" id="demo1" name="kssj"
+                                autocomplete="off">
+                    </div>
+                    <em>-</em>
+                    <div class="form-group">
+
+                        <input type="text" class="form-control demo" id="demo2" name="jssj"
+                                 autocomplete="off">
+                    </div>
+                    {#                        <button type="submit" class="btn btn-default">查 询</button>#}
+                    <a id="datetime_rang" href="javascript:;">确定</a>
+                </form>
+            </div>
+
+        </div>
+
+        {% if cl.search_list %}
+            <div style="float: right;">
+                <form method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" value="{{ cl.q }}" placeholder="关键字搜索">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+            {% if cl.action_list %}
+                <div class="form-group">
+                    <select name="action" class="form-control" style="min-width: 200px;">
+                        <option>请选择功能</option>
+                        {% for item in cl.action_list %}
+                            <option value="{{ item.name }}">{{ item.text }}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="btn btn-primary" type="submit" value="执行">
+                </div>
+            {% endif %}
+            <div style="padding-top: 2%;">
+
+            {% table_count cl %}
+            <input id="Button1" type="button" value="导出EXCEL"
+        onclick="method1('tb')" />
+            </div>
+{#                        <nav aria-label="Page navigation">#}
+{#                            <ul class="pagination">#}
+{#                                {{ page.page_html|safe }}#}
+{#                            </ul>#}
+{#                        </nav>#}
+
+        </form>
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(function () {
+            var url = window.location.href
+            $("#datetime_rang").prop('href', url)
+            $(".demo").datetimepicker({
+                {#minView:"month",#}
+                format: 'yyyy-mm-dd hh:ii:ss',
+                language: 'zh-CN',
+                autoclose: true,
+                todayBtn: true,
+            });
+
+            $('#demo1').on("change", function () {
+                var name = $(this).attr('name')
+                var value = $(this).datetimepicker().val()
+                var reg = /&?kssj=[1-9]\d{3}-\d{2}-\d{2}(\+|\%\d{2})\d{2}:\d{2}:\d{2}/
+                var regExp = new RegExp(reg)
+                var url = $('#datetime_rang').attr('href')
+                var url = unescape(url)
+                url = url.replace('\+', '\%20')
+                var url = url.replace(regExp,'')
+                console.log(url)
+                if (url.indexOf("?") != -1) {
+                    url = url + '&' + name + '=' + value
+                    $("#datetime_rang").prop('href', url)
+                } else {
+                    url = url + '?&' + name + '=' + value
+                    $("#datetime_rang").prop('href', url)
+                }
+            })
+            $('#demo2').on("change", function () {
+                var name = $(this).attr('name')
+                var value = $(this).datetimepicker().val()
+                var reg = /&?jssj=[1-9]\d{3}-\d{2}-\d{2}\%20\d{2}:\d{2}:\d{2}/
+                var regExp = new RegExp(reg)
+                var url = $('#datetime_rang').attr('href')
+                var url = unescape(url)
+                var url = url.replace('\+', '\%20')
+                var url = url.replace(regExp,'')
+                if (url.indexOf("?") != -1) {
+                    url = url + '&' + name + '=' + value
+                    $("#datetime_rang").prop('href', url)
+                } else {
+                    url = url + '?&' + name + '=' + value
+                    $("#datetime_rang").prop('href', url)
+                }
+            })
+        });
+
+    </script>
+    <script type="text/javascript" language="javascript">
+        window.onload = function(){
+            var tbhead = document.getElementsByClassName("tb-head");
+            var computedStyle = document.defaultView.getComputedStyle(tbhead[0], null);
+            console.log(computedStyle.backgroundColor);
+            tbhead[0].style.backgroundColor = computedStyle.backgroundColor;
+        }
+        var idTmr;
+        function  getExplorer() {
+            var explorer = window.navigator.userAgent ;
+            //ie
+            if (explorer.indexOf("MSIE") >= 0) {
+                return 'ie';
+            }
+            //firefox
+            else if (explorer.indexOf("Firefox") >= 0) {
+                return 'Firefox';
+            }
+            //Chrome
+            else if(explorer.indexOf("Chrome") >= 0){
+                return 'Chrome';
+            }
+            //Opera
+            else if(explorer.indexOf("Opera") >= 0){
+                return 'Opera';
+            }
+            //Safari
+            else if(explorer.indexOf("Safari") >= 0){
+                return 'Safari';
+            }
+        }
+        function method1(tableid) {//整个表格拷贝到EXCEL中
+            if(getExplorer()=='ie')
+            {
+                var curTbl = document.getElementById(tableid);
+                var oXL = new ActiveXObject("Excel.Application");
+
+                //创建AX对象excel
+                var oWB = oXL.Workbooks.Add();
+                //获取workbook对象
+                var xlsheet = oWB.Worksheets(1);
+                //激活当前sheet
+                var sel = document.body.createTextRange();
+                sel.moveToElementText(curTbl);
+                //把表格中的内容移到TextRange中
+                sel.select;
+                //全选TextRange中内容
+                sel.execCommand("Copy");
+                //复制TextRange中内容
+                xlsheet.Paste();
+                //粘贴到活动的EXCEL中
+                oXL.Visible = true;
+                //设置excel可见属性
+
+                try {
+                    var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+                } catch (e) {
+                    print("Nested catch caught " + e);
+                } finally {
+                    oWB.SaveAs(fname);
+
+                    oWB.Close(savechanges = false);
+                    //xls.visible = false;
+                    oXL.Quit();
+                    oXL = null;
+                    //结束excel进程，退出完成
+                    //window.setInterval("Cleanup();",1);
+                    idTmr = window.setInterval("Cleanup();", 1);
+                }
+            }
+            else
+            {
+                tableToExcel(tableid)
+            }
+        }
+        function Cleanup() {
+            window.clearInterval(idTmr);
+            CollectGarbage();
+        }
+        var tableToExcel = (function() {
+                var uri = 'data:application/vnd.ms-excel;base64,',
+                    template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+                    base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
+                    format = function(s, c) {
+                                return s.replace(/{(\w+)}/g,
+                                function(m, p) { return c[p]; })
+                            };
+                return function(table, name) {
+                        debugger;
+                        if (!table.nodeType) table = document.getElementById(table);
+                        var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
+                        window.location.href = uri + base64(format(template, ctx));
+                    }
+        })()
+    </script>
+{% endblock %}

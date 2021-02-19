@@ -31,3 +31,7 @@ def host_table_tmp(obj,list_name):
     logger.debug(head_list)
     logger.debug(body_list)
     return {'head_list':head_list,'body_list':body_list}
+
+@register.filter
+def get_obj_attr(obj, attr):
+    return getattr(obj, attr)

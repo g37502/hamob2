@@ -4,6 +4,7 @@
 #  
 # author:gyl
 from django.db.models import Q
+from django.db.models import Avg,Max,Min,Count,Sum
 from stark.service.stark import site, StarkConfig,Option
 from  business_presen.models import *
 from django.utils.safestring import mark_safe
@@ -22,8 +23,9 @@ import datetime
 import numpy as np
 from django_pandas.io import read_frame
 from stark.service.stark import ChangeList
-from stark.service.stark import Option
+from stark.service.stark import Option,Row
 from types import FunctionType
+from django.db.models.expressions import RawSQL
 from django.http import QueryDict
 import re
 from stark.utils.pagination import Pagination
@@ -63,19 +65,94 @@ class Row_pic(object):
                 query_dict[val]=text
                 yield '<a href="?%s">%s</a>' %(query_dict.urlencode(),text)
         yield '</div>'
-
-class Row_time(object):
-    def __init__(self, data_list, option, query_dict):
+class Row_count(object):
+    def __init__(self,data_list,option,query_dict):
         self.data_list = data_list
         self.option = option
         self.query_dict = query_dict
+        # logger.debug(option.field)
     def __iter__(self):
-        pass
+        '''data_list=（{'bussiness':'Monitor'}, {'bussiness':'reportURLNUM', 'bussiness':'monitorURLNUM'）'''
+        '''option = CangeList_pic'''
+        ''' query_dict: request dict'''
+        # val = self.option.get_value(self.data_list)
+        val = 'bussiness'
+        yield '<div class="whole">'
+        tatal_query_dict = self.query_dict.copy()
+        tatal_query_dict._mutable = True
+        origin_value_list = self.query_dict.getlist('bussiness')
+        if origin_value_list:
+            tatal_query_dict.pop(val)
+            yield '<a href="?%s">全部</a>' % (tatal_query_dict.urlencode(),)
+        else:
+            yield '<a class="active" href="?%s">全部</a>' % (tatal_query_dict.urlencode(),)
+        yield '</div>'
+        yield '<div class="others">'
+        # logger.debug(self.data_list)
+        for item in self.data_list:
+
+            text=item[val]
+            # logger.debug(text)
+            query_dict = self.query_dict.copy()
+            query_dict._mutable = True
+            if not self.option.is_multi:
+                if str(text) in origin_value_list:
+                    query_dict.pop(val)
+                    yield '<a class="active" href="?%s">%s</a>' %(query_dict.urlencode(),text)
+                else:
+                    query_dict[val]=text
+                    yield '<a href="?%s">%s</a>' %(query_dict.urlencode(),text)
+            else:
+                multi_val_list = query_dict.getlist(val)
+                if str(text) in origin_value_list:
+                    # 已经选，把自己去掉
+                    multi_val_list.remove(str(text))
+                    query_dict.setlist(val, multi_val_list)
+                    yield '<a class="active" href="?%s">%s</a>' % (query_dict.urlencode(), text)
+                else:
+                    multi_val_list.append(text)
+                    query_dict.setlist(val, multi_val_list)
+                    yield '<a href="?%s">%s</a>' % (query_dict.urlencode(), text)
+        yield '</div>'
+class Row_timeunit(object):
+    def __init__(self, data_list,config,query_dict):
+        self.data_list= data_list
+        self.query_dict = query_dict
+        # logger.debug(type(self.data_list))
+    def __iter__(self):
+        yield '<div class="whole">'
+        tatal_query_dict = self.query_dict.copy()
+        tatal_query_dict._mutable = True
+        origin_value_list = self.query_dict.getlist('timeunit')
+        if origin_value_list:
+            yield '<a href="#">时长</a>'
+        else:
+            yield '<a class="active" href="#">时长</a>'
+        yield '</div>'
+        yield '<div class="others">'
+        for item in self.data_list:
+            val = 'timeunit'
+            text=item.unit
+            # logger.debug(text)
+            query_dict = self.query_dict.copy()
+            query_dict._mutable = True
+            if str(text) in origin_value_list:
+                query_dict.pop(val)
+                yield '<a class="active" href="?%s">%s</a>' %(query_dict.urlencode(),item.filed)
+            else:
+                query_dict[val]=text
+                yield '<a href="?%s">%s</a>' %(query_dict.urlencode(),item.filed)
+        yield '</div>'
 
 class Option_pic(Option):
     def gen_column(self,_field,query_dict):
         # logger.debug(_field,query_dict)
         row=Row_pic(_field,self,query_dict)
+        return row
+class Option_count(Option):
+    def gen_column(self, _field, query_dict):
+        # logger.debug(_field,query_dict)
+        row = Row_count(_field, self, query_dict)
         return row
 class CangeList_pic(ChangeList):
     def gen_list_filter_rows(self):
@@ -100,9 +177,56 @@ class Option_plt(object):
         self.colum_func = colum_func
         #对每幅图的数据整形
         self.plt_func = plt_func
+class Option_timeunit(object):
+    def __init__(self,unit,filed):
+        self.unit = unit
+        self.filed = filed
+    def get_timeunit(self,_field,config,query_dict):
+        row = Row_timeunit(_field,config,query_dict)
+        # logger.debug(row)
+        return row
+class ChangeList_count(object):
+    def __init__(self,config,queryset,request):
+        self.config = config
+        self.queryset = queryset
+        self.request = request
+        self.list_filter = self.config.get_list_filter_count()
+    def gen_list_filter_rows(self):
+        for option in self.list_filter:
+            # print(option.field)
+            if isinstance(option.field, FunctionType):
+                # val = self.config.
+                _field = []
+                for i in option.field(self.config):
+                    _field.append({'bussiness':i})
+                yield option.gen_column(_field,self.request.GET)
+            else:
+                _field = self.config.model_class._meta.get_field(option.field)
+                yield option.get_queryset(_field, self.config.model_class, self.request.GET)
+class ChangeList_timeunit(object):
+    def __init__(self,config,query_dict):
+        self.config = config
+        self.query_dict=query_dict
+        self.list_filter = self.config.get_list_filter_timeunit()
+        # logger.debug(self.list_filter)
+    def gen_list_filter_row(self):
+        _field = []
+        for option in self.list_filter:
+            _field.append(option)
+            # logger.debug(_field)
+        # logger.debug(_field)
+        yield option.get_timeunit(_field,self.config, self.query_dict)
+
 class Count_dataConfig(StarkConfig):
+    '''日流量'''
     def business(self):
         list_column = self.list_filter_column
+        list_column1 = []
+        for i in list_column:
+            list_column1.append(i.filed)
+        return list_column1
+    def business_count(self):
+        list_column = self.list_filter_count_column
         list_column1 = []
         for i in list_column:
             list_column1.append(i.filed)
@@ -142,6 +266,14 @@ class Count_dataConfig(StarkConfig):
         j = j.fillna(0)
         logger.debug(j[[bussiness]])
         return j[[bussiness]]
+    def get_list_filter_count(self):
+        val = []
+        val.extend(self.list_filter_count)
+        return val
+    def get_list_filter_timeunit(self):
+        val=[]
+        val.extend(self.list_filter_timeunit)
+        return val
     list_filter = [
         Option_pic(field='MonitorAddress',is_choice=False,is_multi=True,text_func=lambda x:x.name, value_func=lambda x:x.pk),
         Option_pic(field=business,is_choice=False,is_multi=False,text_func=text_func, value_func=value_func),
@@ -155,6 +287,25 @@ class Count_dataConfig(StarkConfig):
         Option_plt(filed='RATE',colum_nu=5,title='中标率',unit="",explain='中标率',colum_func=colum_rate,plt_func=plt_rate),
         Option_plt(filed='GURL_NU',colum_nu=6,title='每G文件包含URL量',unit='百个',explain='URL数量', colum_func=colum_content,plt_func=plt_content),
         Option_plt(filed='PIC-SIZE',colum_nu=7,title='图片平均大小',unit='K',explain='图片平均大小', colum_func=colum_size,plt_func=plt_size),
+    ]
+    list_filter_count = [
+        Option_count(field='MonitorAddress', is_choice=False, is_multi=True, text_func=lambda x: x.name,
+                   value_func=lambda x: x.pk),
+        Option_count(field=business_count, is_choice=False, is_multi=True, text_func=text_func, value_func=value_func),
+    ]
+    list_filter_count_column=[
+        Option_plt(filed='Monitor', colum_nu=1,title='流量图', unit='K', explain='接收文件大小'),
+        Option_plt(filed='reportURLNUM', colum_nu=2, title='中标量', unit="个", explain='中标数量'),
+        Option_plt(filed='monitorURLNUM', colum_nu=3, title='DPI URL总量', unit="个", explain='DPI URL总量'),
+    ]
+    # 周：’w', 日：‘D'， 小时:'H', 分钟:'T' or 'min',月：’m', 季度：q
+    list_filter_timeunit=[
+        Option_timeunit(unit='H',filed='时'),
+        Option_timeunit(unit='D', filed='天'),
+        Option_timeunit(unit='m', filed='月'),
+    ]
+    list_filter_count_type=[
+
     ]
     def get_list_filter_column(self):
         val = self.list_filter_column
@@ -171,7 +322,7 @@ class Count_dataConfig(StarkConfig):
     def get_time(self,request):
         kssj = request.GET.get('kssj')
         jssj = request.GET.get('jssj')
-        logger.debug(kssj, jssj)
+        # logger.debug(kssj, jssj)
         if not kssj and not jssj:
             kssj=(datetime.datetime.now()+datetime.timedelta(days=-10)).strftime("%Y-%m-%d %H:%M:%S")
             jssj=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -179,7 +330,6 @@ class Count_dataConfig(StarkConfig):
             jssj = (datetime.datetime.strptime(kssj,"%Y-%m-%d %H:%M:%S")+datetime.timedelta(days=10)).strftime("%Y-%m-%d %H:%M:%S")
         elif jssj and not kssj:
             kssj = (datetime.datetime.strptime(jssj,"%Y-%m-%d %H:%M:%S")+datetime.timedelta(days=-10)).strftime("%Y-%m-%d %H:%M:%S")
-        logger.debug(kssj, jssj)
         return kssj,jssj
     def get_bussiness(self,request):
         bussiness = request.GET.get('bussiness')
@@ -266,7 +416,7 @@ class Count_dataConfig(StarkConfig):
         qs_dataframe = read_frame(qs=queryset)
         for i in self.get_list_filter_column():
             if isinstance(i.colum_func,FunctionType) and bussiness == i.filed:
-                qs_dataframe= i.colum_func(self,qs_dataframe,i.filed)
+                qs_dataframe = i.colum_func(self,qs_dataframe,i.filed)
                 return qs_dataframe
         qs_dataframe = qs_dataframe[['inserttime', 'MonitorAddress', bussiness]]
         return qs_dataframe
@@ -316,13 +466,9 @@ class Count_dataConfig(StarkConfig):
             response = getattr(self, action_name)(request)
             if response:
                 return response
-
-
-
         # ##### 处理搜索 #####
         search_list, q, con = self.get_search_condition(request)
         # ##### 处理分页 #####
-
         from stark.utils.pagination import Pagination
         total_count = self.model_class.objects.filter(con).count()
         query_params = request.GET.copy()
@@ -345,12 +491,70 @@ class Count_dataConfig(StarkConfig):
             'src':src
         }
         return render(request,'business_presen/pic.html',context)
+    def reverse_count(self,row):
+        app_label = self.model_class._meta.app_label
+        model_name = self.model_class._meta.model_name
+        namespace = site.namespace
+        name = '%s:%s_%s_changelist_count' % (namespace, app_label, model_name)
+        count_url = reverse(name)
+        return count_url
+    def extra_url(self):
+        info = self.model_class._meta.app_label, self.model_class._meta.model_name
+        s = url(r'^changelist_count/$', self.changelist_count, name='%s_%s_changelist_count' % info)
+        return s
+
+    def changelist_count(self,request):
+        origin_queryset = self.get_queryset()
+        # logger.debug(con,self.get_list_filter_condition())
+        # 获取开始结束时间
+        kssj, jssj = self.get_time(request)
+        # logger.debug(kssj, jssj)
+        comb_condition = {}
+        element = request.GET.getlist('MonitorAddress')
+        if element:
+            comb_condition['%s__in' % 'MonitorAddress'] = element
+        logger.debug(comb_condition)
+        _time_format = self.get_time_format(request)
+        _annotate_list = self.get_annotate_list(request)
+        logger.debug(_annotate_list)
+        queryset = origin_queryset.filter(inserttime__range=(kssj, jssj)).filter().filter(**comb_condition
+        ).extra(select=_time_format).values('MonitorAddress__name','inserttime').annotate(*_annotate_list).order_by(
+            *self.get_order_by())
+        cl = ChangeList_count(self, queryset, request)
+        c2 = ChangeList_timeunit(self, request.GET)
+        return render(request,'business_presen/count.html', {'cl': cl, 'c2': c2,})
+    def get_annotate_list(self,request):
+        _annotate_list=[]
+        bussiness_list = request.GET.getlist('bussiness')
+        if not bussiness_list:
+            _annotate_list.append(Sum('Monitor'))
+            _annotate_list.append(Sum('reportURLNUM'))
+            _annotate_list.append(Sum('monitorURLNUM'))
+            return _annotate_list
+        for bussiness in bussiness_list:
+            _annotate_list.append(Sum(bussiness))
+        return _annotate_list
+        
+    def get_time_format(self,request):
+        time_unit = request.GET.get('timeunit')
+        if time_unit is None:
+            time_unit = 'D'
+        if time_unit == 'D':
+            time_format = {'inserttime': "DATE_FORMAT(inserttime,'%%Y-%%m-%%d')"}
+        elif time_unit == 'H':
+            time_format = {'inserttime': "DATE_FORMAT(inserttime,'%%Y-%%m-%%d %%H')"}
+        elif time_unit == 'm':
+            time_format = {'inserttime': "DATE_FORMAT(inserttime,'%%Y-%%m')"}
+        elif time_unit == 'Y':
+            time_format = {'inserttime': "DATE_FORMAT(inserttime,'%%Y')"}
+        return time_format
     def src_pic(self,pd):
         pass
 
 site.register(Count_data,Count_dataConfig)
 
 class Colum_Count(Count_dataConfig):
+    '''月流量'''
     def business(self):
         list_column = self.list_filter_column
         list_column1 = []
@@ -551,6 +755,7 @@ class DomainStarkConfig(StarkConfig):
 
         return  con
     def business_presen_dqpic_list(self,request,pk):
+        '''图片显示'''
         search_list = ['colleteid']
         con = self.get_search_condition_url(request)
         conn =self.get_search_condition_dqpic(request,search_list)
