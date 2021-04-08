@@ -55,7 +55,7 @@ def main():
 
 # if __name__ == '__main__':
 #     main()
-# print(os.path.abspath(__file__))
-dir_path = 'C:/Users/gaoya/Desktop/python2020/CRM/s1016/'
+dir_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# dir_path = 'C:/Users/gaoya/Desktop/python2020/CRM/s1016/'
 log_file = os.path.join(dir_path,'log','hamob.log')
 logger = memo_log(logger_name='hamob-log',level = logging.DEBUG)

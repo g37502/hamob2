@@ -131,3 +131,4 @@ config.ini
 settings.py
 hamob2.xml
 uwsgi.log
+log/*
