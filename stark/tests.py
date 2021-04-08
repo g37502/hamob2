@@ -21,6 +21,13 @@ dd = datetime.datetime.strptime(dd, "%Y-%m-%d %H:%M:%S")
 # 时间格式转str:
 dc = dd.strftime("%Y-%m-%d %H:%M:%S")
 # print(dc,type(dc))
-a = 0
-if a:
-    print('ssss')
+import base64
+s='http://www.hamob.com'
+bm=base64.b64encode(s.encode('utf-8'))
+print(bm)
+# bm = str(bm,encoding='utf-8')
+# s=str(bm,encoding='utf-8')
+# print(s)
+aa=base64.b64decode(bm).decode('utf-8')
+print(aa)
+

@@ -15,8 +15,15 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/venv1" />
+      <excludeFolder url="file://$MODULE_DIR$/venv2" />
+      <excludeFolder url="file://$MODULE_DIR$/stark/static/stark/bootstrap-datetimepicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/stark/static/stark/js/bootstrap-datetimepicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/static/stark/bootstrap-datetimepicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/static/stark/js/bootstrap-datetimepicker/build" />
+      <excludeFolder url="file://$MODULE_DIR$/conf" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (venv2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Django Lib" level="project" />
   </component>

@@ -2,31 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c52de9b5-6324-418a-a5cf-84ec680df7ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Django_Lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business_presen/templates/business_presen/count.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business_presen/templates/business_presen/table.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_func/stark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_func/templates/business_func/reptile_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business_func/templates/business_func/url_details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reqtile_h/stark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/hamob2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hamob2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_presen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/business_presen/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_presen/stark.py" beforeDir="false" afterPath="$PROJECT_DIR$/business_presen/stark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_presen/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/business_presen/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hardmanage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/hardmanage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hardmanage/stark.py" beforeDir="false" afterPath="$PROJECT_DIR$/hardmanage/stark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stark/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/stark/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stark/service/stark.py" beforeDir="false" afterPath="$PROJECT_DIR$/stark/service/stark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stark/templates/stark/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/stark/templates/stark/table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stark/templatetags/stark.py" beforeDir="false" afterPath="$PROJECT_DIR$/stark/templatetags/stark.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stark/templatetags/table_temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/stark/templatetags/table_temp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stark/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stark/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/raids_h.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/raids_h.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,11 +44,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/business_presen/templates/business_presen" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -52,10 +60,56 @@
       <recent name="C:\Users\gaoya\Desktop\py2021\hamob2\business_presen\templates\business_presen" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gaoya\Desktop\py2021\hamob2\business_func\templates\business_fun" />
+      <recent name="C:\Users\gaoya\Desktop\py2021\hamob2\business_func" />
       <recent name="C:\Users\gaoya\Desktop\py2021\hamob2\conf" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.hamob2">
+    <configuration name="hardinfomeation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="hamob2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tool" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tool/hardinfomeation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="redis_c" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="hamob2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tool" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tool/redis_c.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="stark" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="hamob2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -70,6 +124,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/business_presen/stark.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tests (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="hamob2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/stark" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stark/tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,6 +202,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.redis_c" />
+        <item itemvalue="Python.hardinfomeation" />
+        <item itemvalue="Python.tests (1)" />
         <item itemvalue="Python.tests" />
         <item itemvalue="Python.stark" />
       </list>
@@ -144,7 +223,42 @@
       <workItem from="1613445354786" duration="7010000" />
       <workItem from="1613525901302" duration="7964000" />
       <workItem from="1613555442014" duration="31227000" />
-      <workItem from="1613696583204" duration="18678000" />
+      <workItem from="1613696583204" duration="23818000" />
+      <workItem from="1613781749160" duration="1472000" />
+      <workItem from="1613980172790" duration="1286000" />
+      <workItem from="1614756206131" duration="4261000" />
+      <workItem from="1614826248974" duration="5849000" />
+      <workItem from="1614906848988" duration="1332000" />
+      <workItem from="1614933278396" duration="3265000" />
+      <workItem from="1614937347707" duration="416000" />
+      <workItem from="1615168706561" duration="2238000" />
+      <workItem from="1615254388024" duration="2700000" />
+      <workItem from="1615344173688" duration="765000" />
+      <workItem from="1615513285825" duration="373000" />
+      <workItem from="1615513845867" duration="599000" />
+      <workItem from="1615517674591" duration="1198000" />
+      <workItem from="1615771996608" duration="314000" />
+      <workItem from="1615773893716" duration="1196000" />
+      <workItem from="1615775122549" duration="1627000" />
+      <workItem from="1615857987065" duration="1198000" />
+      <workItem from="1615860076786" duration="599000" />
+      <workItem from="1615875562686" duration="1192000" />
+      <workItem from="1615944520178" duration="16105000" />
+      <workItem from="1616374521732" duration="502000" />
+      <workItem from="1616375040570" duration="46000" />
+      <workItem from="1616375099666" duration="861000" />
+      <workItem from="1616409963107" duration="6053000" />
+      <workItem from="1616461342787" duration="3259000" />
+      <workItem from="1616634780139" duration="21214000" />
+      <workItem from="1616663035230" duration="1382000" />
+      <workItem from="1617153916697" duration="298000" />
+      <workItem from="1617158360219" duration="14354000" />
+      <workItem from="1617178811263" duration="4820000" />
+      <workItem from="1617238061705" duration="15042000" />
+      <workItem from="1617346408381" duration="3692000" />
+      <workItem from="1617671353525" duration="7469000" />
+      <workItem from="1617756352304" duration="10031000" />
+      <workItem from="1617843581900" duration="2957000" />
     </task>
     <servers />
   </component>
@@ -175,7 +289,10 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/hamob2$tests__1_.coverage" NAME="tests (1) Coverage Results" MODIFIED="1617174167941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stark" />
+    <SUITE FILE_PATH="coverage/hamob2$redis_c.coverage" NAME="redis_c Coverage Results" MODIFIED="1617180236075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tool" />
     <SUITE FILE_PATH="coverage/hamob2$stark.coverage" NAME="stark Coverage Results" MODIFIED="1613447259779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business_presen" />
-    <SUITE FILE_PATH="coverage/hamob2$tests.coverage" NAME="tests Coverage Results" MODIFIED="1613617700603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business_presen" />
+    <SUITE FILE_PATH="coverage/hamob2$hardinfomeation.coverage" NAME="hardinfomeation Coverage Results" MODIFIED="1617180089216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tool" />
+    <SUITE FILE_PATH="coverage/hamob2$tests.coverage" NAME="tests Coverage Results" MODIFIED="1616661184742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/business_presen" />
   </component>
 </project>

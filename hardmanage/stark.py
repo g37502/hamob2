@@ -54,7 +54,7 @@ class HostConfig(StarkConfig):
         return details
     def extra_url(self):
         info = self.model_class._meta.app_label, self.model_class._meta.model_name
-        s = url(r'^(?P<pk>\d+)/details/$', self.hardmanage_host_details, name='%s_%s_details' % info)
+        s = [url(r'^(?P<pk>\d+)/details/$', self.hardmanage_host_details, name='%s_%s_details' % info)]
         return s
     def hardmanage_host_details(self,request,pk):
         # logger.debug(pk)

@@ -29,6 +29,7 @@ from django.db.models.expressions import RawSQL
 from django.http import QueryDict
 import re
 from stark.utils.pagination import Pagination
+from asgiref.sync import sync_to_async
 
 class Row_pic(object):
     def __init__(self,data_list,option,query_dict):
@@ -324,7 +325,7 @@ class Count_dataConfig(StarkConfig):
         jssj = request.GET.get('jssj')
         # logger.debug(kssj, jssj)
         if not kssj and not jssj:
-            kssj=(datetime.datetime.now()+datetime.timedelta(days=-10)).strftime("%Y-%m-%d %H:%M:%S")
+            kssj=(datetime.datetime.now()+datetime.timedelta(days=-5)).strftime("%Y-%m-%d %H:%M:%S")
             jssj=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         elif kssj and not jssj:
             jssj = (datetime.datetime.strptime(kssj,"%Y-%m-%d %H:%M:%S")+datetime.timedelta(days=10)).strftime("%Y-%m-%d %H:%M:%S")
@@ -500,7 +501,7 @@ class Count_dataConfig(StarkConfig):
         return count_url
     def extra_url(self):
         info = self.model_class._meta.app_label, self.model_class._meta.model_name
-        s = url(r'^changelist_count/$', self.changelist_count, name='%s_%s_changelist_count' % info)
+        s = [url(r'^changelist_count/$', self.changelist_count, name='%s_%s_changelist_count' % info)]
         return s
 
     def changelist_count(self,request):
@@ -550,7 +551,6 @@ class Count_dataConfig(StarkConfig):
         return time_format
     def src_pic(self,pd):
         pass
-
 site.register(Count_data,Count_dataConfig)
 
 class Colum_Count(Count_dataConfig):
@@ -727,7 +727,7 @@ class DomainStarkConfig(StarkConfig):
     order_by = ['-endcatchdate']
     def extra_url(self):
         info = self.model_class._meta.app_label, self.model_class._meta.model_name
-        s = url(r'^(?P<pk>\d+)/dqpic_list/$', self.business_presen_dqpic_list, name='%s_%s_dqpic_list' % info)
+        s = [url(r'^(?P<pk>\d+)/dqpic_list/$', self.business_presen_dqpic_list, name='%s_%s_dqpic_list' % info)]
         return s
     def get_time_filter(self,request):
         kssj = request.GET.get('kssj')

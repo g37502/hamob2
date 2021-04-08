@@ -447,8 +447,8 @@ class StarkConfig(object):
 
         extra = self.extra_url()
         if extra:
-            # urlpatterns.extend(extra)
-            urlpatterns.append(extra)
+            urlpatterns.extend(extra)
+            # urlpatterns.append(extra)
 
         return urlpatterns
 
